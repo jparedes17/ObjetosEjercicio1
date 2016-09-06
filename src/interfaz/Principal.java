@@ -6,7 +6,9 @@
 
 package interfaz;
 
+import clases.DenominadorCeroException;
 import clases.Fraccionario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +85,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.add(cmbCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
 
         cmbBorrar.setText("Borrar");
+        cmbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBorrarActionPerformed(evt);
+            }
+        });
         jPanel2.add(cmbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -113,7 +120,7 @@ public class Principal extends javax.swing.JFrame {
         den= Integer.parseInt(txtDenominador.getText());
         den2= Integer.parseInt(txtDenominador2.getText());
       
-        
+        try{
         f1= new Fraccionario(num, den);
         f2= new Fraccionario(num2, den2);
         
@@ -130,7 +137,22 @@ public class Principal extends javax.swing.JFrame {
         }
              txtNumerador3.setText(""+f3.getNumerador());
              txtDenominador3.setText(""+f3.getDenominador());
+        }catch (DenominadorCeroException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_cmbCalcularActionPerformed
+
+    private void cmbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBorrarActionPerformed
+        // TODO add your handling code here:
+        txtDenominador.setText("");
+        txtDenominador2.setText("");
+        txtDenominador3.setText("");
+        txtNumerador.setText("");
+        txtNumerador2.setText("");
+        txtNumerador3.setText("");
+        
+    }//GEN-LAST:event_cmbBorrarActionPerformed
 
     /**
      * @param args the command line arguments
