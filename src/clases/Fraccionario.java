@@ -56,7 +56,7 @@ public Fraccionario sumar (Fraccionario f2) throws DenominadorCeroException
     Fraccionario f;
     int num, den, mix;
  
-    num = this.numerador* f2.denominador + this.denominador* f2.numerador;
+    num = (this.numerador* f2.denominador) + (this.denominador* f2.numerador);
     den= this.denominador * f2.denominador;
     f= new Fraccionario (num, den, 1);
     return f;
@@ -92,13 +92,13 @@ public Fraccionario division (Fraccionario f2) throws DenominadorCeroException
     return f;
 }
 
-    public Fraccionario convertir (Fraccionario f4) throws DenominadorCeroException 
+    public Fraccionario convertir (Fraccionario f1) throws DenominadorCeroException 
 {
     Fraccionario f;
     int num, den,num2,den2, mix;
-    num= f4.numerador%f4.denominador;
-    den= f4.denominador;
-    mix= f4.numerador/f4.denominador;
+    num= f1.numerador%f1.denominador;
+    den= f1.denominador;
+    mix= f1.numerador/f1.denominador;
     
     f= new Fraccionario (num, den, mix);
     return f;

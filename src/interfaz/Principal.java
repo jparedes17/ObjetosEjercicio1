@@ -73,7 +73,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cmbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, -1, -1));
+
+        txtNumerador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeradorKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 90, -1));
+
+        txtDenominador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominadorKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
@@ -82,7 +94,19 @@ public class Principal extends javax.swing.JFrame {
 
         cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suma", "Resta", "Multiplicacion", "Division" }));
         jPanel1.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+
+        txtNumerador2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumerador2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumerador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 90, -1));
+
+        txtDenominador2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominador2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 90, -1));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
@@ -146,6 +170,27 @@ public class Principal extends javax.swing.JFrame {
         int op,num, num2, num3, den, den2, den3, mix1 = 0;
         Fraccionario f1, f2, f3=null, f4, f5=null, mix;
 
+        if (txtNumerador.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese numerador1", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtNumerador.requestFocusInWindow();
+        }
+        else if (txtDenominador.getText().trim().isEmpty())
+        {
+          JOptionPane.showMessageDialog(this, "Ingrese denominador1", "ERROR", JOptionPane.ERROR_MESSAGE);
+          txtDenominador.requestFocusInWindow();
+        }
+        else if (txtNumerador2.getText().trim().isEmpty())
+        {
+          JOptionPane.showMessageDialog(this, "Ingrese numerador2", "ERROR", JOptionPane.ERROR_MESSAGE);
+          txtNumerador2.requestFocusInWindow();
+        }
+        else if (txtDenominador2.getText().trim().isEmpty())
+        {
+          JOptionPane.showMessageDialog(this, "Ingrese denominador2", "ERROR", JOptionPane.ERROR_MESSAGE);
+          txtDenominador2.requestFocusInWindow();
+        }
+        else {
         op= cmbOperacion.getSelectedIndex();
         num= Integer.parseInt(txtNumerador.getText());
         num2= Integer.parseInt(txtNumerador2.getText());
@@ -189,9 +234,49 @@ public class Principal extends javax.swing.JFrame {
         }catch (DenominadorCeroException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } 
+    
         }
-        
     }//GEN-LAST:event_cmbCalcularActionPerformed
+
+    private void txtNumeradorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeradorKeyTyped
+        // TODO add your handling code here:
+       char c=evt.getKeyChar(); 
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+          } 
+    }//GEN-LAST:event_txtNumeradorKeyTyped
+
+    private void txtDenominadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominadorKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+          } 
+    }//GEN-LAST:event_txtDenominadorKeyTyped
+
+    private void txtNumerador2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerador2KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+          } 
+    }//GEN-LAST:event_txtNumerador2KeyTyped
+
+    private void txtDenominador2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominador2KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+          } 
+    }//GEN-LAST:event_txtDenominador2KeyTyped
 
     /**
      * @param args the command line arguments
